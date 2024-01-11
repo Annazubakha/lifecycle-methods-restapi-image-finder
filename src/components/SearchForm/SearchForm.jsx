@@ -2,6 +2,7 @@ import React from 'react';
 import s from './SearchForm.module.css';
 import { ImSearch } from 'react-icons/im';
 import { toast } from 'react-toastify';
+
 export class SearchForm extends React.Component {
   state = {
     searchText: '',
