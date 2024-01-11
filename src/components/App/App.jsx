@@ -13,7 +13,6 @@ export class App extends React.Component {
     searchText: '',
     page: 1,
     perPage: 12,
-    isEmpty: false,
     isLoadMore: false,
     isLoading: false,
     largeImageURL: '',
@@ -24,10 +23,16 @@ export class App extends React.Component {
     if (prevState.searchText !== searchText || prevState.page !== page) {
       this.setState({ isLoading: true });
       fetchPhotos(searchText, page)
-        .then(({ hits, total }) => {
-          if (!hits.length) {
-            this.setState({ isEmpty: true });
+        .then(({ hits, total, totalHits }) => {
+          if (hits.length === 0) {
+            toast.error(
+              'We ary sorry there are not any fotos on your search. Please, try again.'
+            );
+
             return;
+          }
+          if (page === 1) {
+            toast.success(`We found ${totalHits} images on your request!`);
           }
           this.setState(prev => ({
             photos: [...prev.photos, ...hits],
@@ -38,11 +43,9 @@ export class App extends React.Component {
         .finally(() => this.setState({ isLoading: false }));
     }
   }
-  //  toast.success(`We found ${totalHits} images on your request!`);
   handleFormSubmit = searchText => {
     this.setState({
       searchText,
-      isEmpty: false,
       photos: [],
       page: 1,
       error: null,
@@ -53,22 +56,17 @@ export class App extends React.Component {
       page: prevState.page + 1,
     }));
   };
-  handleClickImg = largeFoto => {
-    this.setState({ largeImgUrl: largeFoto });
+  handleClickImg = url => {
+    this.setState({ largeImgUrl: url });
   };
   render() {
-    const { photos, isLoadMore, isLoading, isEmpty, error, largeImageURL } =
-      this.state;
+    const { photos, isLoadMore, isLoading, error, largeImageURL } = this.state;
     return (
       <>
         <Searchbar onSubmit={this.handleFormSubmit} />
         <ImageGallery photos={photos} openModal={this.handleClickImg} />
         {isLoading && <Loader />}
         {isLoadMore && <Button onBtnLoadMoreClick={this.handleLoadMore} />}
-        {isEmpty &&
-          toast.error(
-            'We ary sorry there are not any fotos on your search. Please, try again.'
-          )}
         {error &&
           toast.error(
             'Oups! Something went wrong, please try reload the page.'
@@ -80,4 +78,3 @@ export class App extends React.Component {
     );
   }
 }
-// робиться запит по gbds fd + повідомлення знайдено фото + модалка

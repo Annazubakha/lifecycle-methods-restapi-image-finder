@@ -1,6 +1,5 @@
 import s from './ImageGalleryItem.module.css';
 export const ImageGalleryItem = ({
-  id,
   tags,
   webformatURL,
   largeImageURL,
@@ -9,8 +8,6 @@ export const ImageGalleryItem = ({
   return (
     <li
       className={s.ImageGalleryItem}
-      id={id}
-      key={id}
       onClick={() => openModal(largeImageURL)}
       style={{ flexBasis: '20%' }}
     >

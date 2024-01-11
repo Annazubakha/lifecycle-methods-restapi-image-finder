@@ -1,4 +1,4 @@
-import s from '../Modal/Modal.module.css';
+import s from './Loader.module.css';
 import { CircleLoader } from 'react-spinners';
 
 export const Loader = () => {

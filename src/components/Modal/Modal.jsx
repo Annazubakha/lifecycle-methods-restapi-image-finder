@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import s from './Modal.module.css';
 
 export default class Modal extends Component {
   componentDidMount() {
@@ -18,8 +19,10 @@ export default class Modal extends Component {
   };
   render() {
     return (
-      <div onClick={this.handleBackdropClick}>
-        <img src={this.props.url} alt="" width="70%" />
+      <div className={s.Overlay}>
+        <div onClick={this.handleBackdropClick} className={s.Modal}>
+          <img src={this.props.url} alt="" width="70%" />
+        </div>
       </div>
     );
   }

@@ -13,6 +13,5 @@ export const fetchPhotos = async (serchText, page) => {
   });
   const url = `${BASE_URL}?${PARAMS}`;
   const { data } = await axios.get(url, PARAMS);
-  console.log(data);
   return data;
 };
