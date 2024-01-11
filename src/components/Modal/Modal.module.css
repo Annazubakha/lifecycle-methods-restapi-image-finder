@@ -12,6 +12,10 @@
 }
 
 .Modal {
-  max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 24px);
+  /* max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 24px); */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

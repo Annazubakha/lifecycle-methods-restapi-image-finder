@@ -57,7 +57,7 @@ export class App extends React.Component {
     }));
   };
   handleClickImg = url => {
-    this.setState({ largeImgUrl: url });
+    this.setState({ largeImageURL: url });
   };
   render() {
     const { photos, isLoadMore, isLoading, error, largeImageURL } = this.state;

@@ -6,11 +6,7 @@ export const ImageGalleryItem = ({
   openModal,
 }) => {
   return (
-    <li
-      className={s.ImageGalleryItem}
-      onClick={() => openModal(largeImageURL)}
-      style={{ flexBasis: '20%' }}
-    >
+    <li className={s.ImageGalleryItem} onClick={() => openModal(largeImageURL)}>
       <img src={webformatURL} alt={tags} className={s.ImageGalleryItem_image} />
     </li>
   );
