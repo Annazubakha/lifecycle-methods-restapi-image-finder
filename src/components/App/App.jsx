@@ -49,6 +49,7 @@ export class App extends React.Component {
       photos: [],
       page: 1,
       error: null,
+      isLoadMore: false,
     });
   };
   handleLoadMore = () => {
