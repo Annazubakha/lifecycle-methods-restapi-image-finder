@@ -36,7 +36,7 @@ export class App extends React.Component {
           }
           this.setState(prev => ({
             photos: [...prev.photos, ...hits],
-            isLoadMore: page < Math.ceil(total / 20),
+            isLoadMore: page < Math.ceil(total / 12),
           }));
         })
         .catch(error => this.setState({ error: error.message }))
